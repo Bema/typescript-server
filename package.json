@@ -1,0 +1,53 @@
+{
+  "name": "network-server",
+  "version": "0.0.1",
+  "description": "Network API Server",
+  "main": "build/apps.js",
+  "scripts": {
+    "start": "npm run dev",
+    "build": "npm run tslint && npm run build:clean && npm run test:build && webpack --config webpack/webpack.js",
+    "build:clean": "rm -rf build",
+    "dev": "NODE_ENV=development PORT=3000 ./node_modules/.bin/nodemon --exec ./node_modules/.bin/ts-node ./src/app.ts",
+    "test": "NODE_ENV=development PORT=3001 ./node_modules/.bin/jest --watch",
+    "test:build": "NODE_ENV=test PORT=3001 ./node_modules/.bin/jest",
+    "tslint": "./node_modules/.bin/tslint -c tslint.json -p tsconfig.json"
+  },
+  "author": "bema",
+  "dependencies": {
+    "@types/lodash": "^4.14.64",
+    "awesome-typescript-loader": "^3.1.3",
+    "express": "^4.15.2",
+    "json-loader": "^0.5.4",
+    "typescript": "^2.3.2",
+    "webpack": "^2.5.1"
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "\\.test\\.(js|ts|tsx)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^19.2.3",
+    "@types/node": "^7.0.18",
+    "babel-core": "^6.24.1",
+    "jest": "^20.0.1",
+    "lodash": "^4.17.4",
+    "nodemon": "^1.11.0",
+    "supertest": "^3.0.0",
+    "ts-jest": "^20.0.3",
+    "ts-node": "^3.0.4",
+    "tslint": "^5.2.0",
+    "webpack-node-externals": "^1.6.0",
+    "winston": "^2.3.1"
+  }
+}
